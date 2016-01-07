@@ -1,0 +1,6 @@
+movie-api:
+  build: ./movie-api
+  ports:
+    - "8080:5000"
+  volumes:
+    - ./movie-api:/code

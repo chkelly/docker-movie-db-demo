@@ -1,0 +1,6 @@
+movie-api:
+  image: TBD
+  restart: always
+  stdin_open: true
+  ports:
+   - 5000
