@@ -4,3 +4,11 @@ movie-api:
   stdin_open: true
   ports:
    - 5000
+movie-web:
+  image: TBD
+  restart: always
+  stdin_open: true
+  links:
+    - movie-api
+  ports:
+    - 5000

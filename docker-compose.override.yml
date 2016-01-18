@@ -1,6 +1,26 @@
 movie-api:
   build: ./movie-api
+  environment:
+    AWS_ACCESS_KEY_ID: 'foo'
+    AWS_SECRET_ACCESS_KEY: 'bar'
+    AWS_DEFAULT_REGION: 'us-east-1'
+    DYNAMODB_TABLE_NAME: 'Movies'
+    DYNAMODB_ENDPOINT_URL: 'http://dynamodb:8000'
+  links:
+    - dynamodb
   ports:
     - "8080:5000"
   volumes:
     - ./movie-api:/code
+movie-web:
+  build: ./movie-web
+  environment:
+    MOVIE_API_URL: 'http://movie-api:5000'
+  ports:
+    - "8081:5000"
+  volumes:
+    - ./movie-web:/code
+dynamodb:
+  image: kcyeu/dynamodb-local
+  ports:
+    - 8000

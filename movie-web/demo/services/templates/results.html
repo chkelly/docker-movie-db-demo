@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Search Results</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" media="screen">
+  </head>
+  <body>
+    <div class="container">
+      <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Movie Title</th>
+          <th>Release Date</th>
+          <th>Rating</th>
+          <th>Rank</th>
+          
+        </tr>
+      <thead>
+      <tbody>
+      {% for movie in movies %}
+        {% if movie.info %}
+          <tr>
+            <td>{{movie.title}}</td>
+            <td>{{movie.info.release_date}}</td>
+            <td>{{movie.info.rating}}</td>
+            <td>{{movie.info.rank}}</td>
+          </tr>
+        {% endif %}
+      {% else %}
+        <p>No movies found. Try a different year</p>
+      {% endfor %}
+      </tbody>
+      </table>
+    </div>
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  </body>
+</html>
